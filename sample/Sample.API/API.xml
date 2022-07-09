@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sample.API</name>
+    </assembly>
+    <members>
+        <member name="T:Sample.API.Auth.Authentication.ApiKey">
+            <summary>
+            ToDo: will be replaced by the Model that implements IAuthenticationInfo
+            </summary>
+        </member>
+        <member name="T:Sample.API.Auth.Authentication.ApiKeyProvider">
+            <summary>
+            Class that provides the API keys or the ApiKeyAuthentication method
+            </summary>
+        </member>
+        <member name="T:Sample.API.Controller.WeatherForecast.WeatherForecastController">
+            <summary>
+            Weather forecast V1 API controller
+            </summary>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.#ctor(AutoMapper.IMapper)">
+            <summary>
+            Creates the Weatherforecast API controller
+            </summary>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.Get(System.String)">
+            <summary>
+            Returns the forecast by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.GetAll(ApiBase.Filter.Pagination.PaginationQueryString,ApiBase.Filter.Sorting.SortQueryString)">
+            <summary>
+            Get all forecasts
+            </summary>
+            <param name="paginationQuery"></param>
+            <param name="sortQuery"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.GetAll_v2">
+            <summary>
+            Gets all forecasts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.Create(Sample.API.Object.API.ForecastResponse)">
+            <summary>
+            Creates a new forecast
+            </summary>
+            <param name="forecast"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.Update(Sample.API.Object.API.ForecastResponse)">
+            <summary>
+            Updates a forecast
+            </summary>
+            <param name="forecast"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController.Delete(System.String)">
+            <summary>
+            Deletes a forecast by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sample.API.Controller.WeatherForecast.WeatherForecastController_V1">
+            <summary>
+            Weather forecast V1 API controller
+            </summary>
+        </member>
+        <member name="F:Sample.API.Controller.WeatherForecast.WeatherForecastController_V1.Mapper">
+            <summary>
+            Mapper that holds the translation between the API objects and the application objects
+            </summary>
+        </member>
+        <member name="F:Sample.API.Controller.WeatherForecast.WeatherForecastController_V1.Forecasts">
+            <summary>
+            Cached forecasts
+            </summary>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController_V1.#ctor(AutoMapper.IMapper)">
+            <summary>
+            Creates a Weatherforecast controller
+            </summary>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Sample.API.Controller.WeatherForecast.WeatherForecastController_V1.Get(System.String)">
+            <summary>
+            Gets the forecast by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sample.API.Object.API.ForecastResponse">
+            <summary>
+            Details about the Forecast
+            </summary>
+        </member>
+        <member name="P:Sample.API.Object.API.ForecastResponse.ID">
+            <summary>
+            Forecast identifier
+            </summary>
+        </member>
+        <member name="P:Sample.API.Object.API.ForecastResponse.Date">
+            <summary>
+            Date the forecast is for
+            </summary>
+        </member>
+        <member name="P:Sample.API.Object.API.ForecastResponse.TemperatureC">
+            <summary>
+            Temperature in degrees Cecilius
+            </summary>
+        </member>
+        <member name="P:Sample.API.Object.API.ForecastResponse.TemperatureF">
+            <summary>
+            Temperature in degrees Fahrenheit
+            </summary>
+        </member>
+        <member name="P:Sample.API.Object.API.ForecastResponse.Summary">
+            <summary>
+            Type of weather
+            </summary>
+        </member>
+        <member name="M:Sample.API.Object.API.ForecastResponse.GetID">
+            <summary>
+            Returns the object's identifier
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sample.API.Startup">
+            <summary>
+            ApiBase startup class
+            </summary>
+        </member>
+        <member name="M:Sample.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Creates an instance of the  startup class
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Sample.API.Startup.ConfigureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure the Services used in the .NET API
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Sample.API.Startup.ConfigureOpenAPI(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure the swagger (openapi) documentation
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Startup.DefaultVersion">
+            <summary>
+            Returns the default API version to use
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Startup.GetAPIXmlDescriptionsFileName">
+            <summary>
+            Returns the filename of the XML descriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sample.API.Startup.GetBadRequestErrorProvider">
+            <summary>
+            Returns the class used to handle the bad request errors
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ApiBase.Mapping.ResponseToDomainProfile">
+            <summary>
+            Class that contains the translations between the external and internal classes
+            </summary>
+        </member>
+        <member name="M:ApiBase.Mapping.ResponseToDomainProfile.#ctor">
+            <summary>
+            Creates a AutoMapper Profile
+            </summary>
+        </member>
+    </members>
+</doc>
