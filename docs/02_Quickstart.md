@@ -163,6 +163,8 @@ public class WeatherForecastController : APIController {
 
     [WeatherForecastGetAuthorization]
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response<ForecastResponse>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public virtual IActionResult Get(string id) {
         var foreCast = Forecasts.Get(id);
         if (foreCast == null) {        {
@@ -196,6 +198,8 @@ To implement requests to the endpoint a method with route needs to be configured
 ```c#
 [HttpGet("{id}")]
 [WeatherForecastGetAuthorization]
+[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response<ForecastResponse>))]
+[ProducesResponseType(StatusCodes.Status404NotFound)]
 public virtual IActionResult Get(string id) {
     var foreCast = Forecasts.Get(id);
     if (foreCast == null) {
@@ -207,6 +211,8 @@ public virtual IActionResult Get(string id) {
 
 This method says that all [GET] requests going to `WeatherForecast/<id>` need to be routed to this method.  
 Additionally when doing the `Authorization` step the `WeatherForecastGetAuthorization` class is used.
+
+For the generated documentation the `ProducesResponseType` was added, this makes it so that the documentation shows responses can be `404 Not Found` or `Response<ForecastResponse>`.
 
 ## Authentication/Authorization
 

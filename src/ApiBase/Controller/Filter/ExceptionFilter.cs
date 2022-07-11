@@ -12,11 +12,22 @@ namespace ApiBase.Controller.Filter
         public override void OnException(ExceptionContext context)
         {
             var t = context.Exception.GetType();
-            if (t.GetInterfaces().Contains(typeof(IApiException)))
+            if (!t.GetInterfaces().Contains(typeof(IApiException)))
             {
-                var error = t.GetMethod("GetError").Invoke(context.Exception, Array.Empty<object>());
-                context.Result = new JsonResult(error);
-                context.HttpContext.Response.StatusCode = (int)(error as IGeneralApiError)?.HttpStatusCode;
+                return;
+            }
+
+            var error = t.GetMethod("GetError")?.Invoke(context.Exception, Array.Empty<object>());
+            if (error == null)
+            {
+                return;
+            }
+                
+            context.Result = new JsonResult(error);
+            var httpStatusCode = (error as IGeneralApiError)?.HttpStatusCode;
+            if (httpStatusCode != null)
+            {
+                context.HttpContext.Response.StatusCode = (int) httpStatusCode;
             }
         }
     }

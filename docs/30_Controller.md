@@ -29,7 +29,7 @@ public class WeatherForecastController : APIController
 ```
 
 Each controller must extend `APIController` and have a constructor with the IMapper as constructor.  
-The constructor can differ based on the configured services, by default `ServerAPI` adds the mapper for separation between Data and API objects.  
+The constructor can differ based on the configured services, by default `ApiBase` adds the mapper for separation between Data and API objects.  
 
 In the controller the REST methods are configured by adding the `HTTP method` with the path parameters.  
 
@@ -69,6 +69,7 @@ The return is always an IActionResult, DotNet has a few shortcut methods for thi
 
 
 Instead of returning the object directly each response should be one of the following classes:
+
 - Response
 - PageResponse
 - Redirect(new RedirectResponse<ReturnType>(APIController, Object).Url.ToString())

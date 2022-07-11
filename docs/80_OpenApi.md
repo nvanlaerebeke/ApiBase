@@ -43,7 +43,7 @@ It is possible to change the `API.xml` filename by overriding the `get` method i
 Example:
 
 ```c#
-public class Startup : ServerAPI.ServerAPI {
+public class Startup : ApiBase.ApiBase {
     ...
     protected override string GetAPIXmlDecriptionsFileName() {
         return "API.xml";
@@ -64,10 +64,10 @@ public class WeatherForecastController : APIController {
 }
 ```
 
-If the `DisplayName` attribute is not sufficient custom logic can be added by overriding the `SetTags` method in the ServerAPI startup class.  
+If the `DisplayName` attribute is not sufficient custom logic can be added by overriding the `SetTags` method in the ApiBase startup class.  
 
 ```c#
-public class Startup : ServerAPI.ServerAPI {
+public class Startup : ApiBase.ApiBase {
     ...
     protected override void SetTags(SwaggerGenOptions options) {
         options.TagActionsBy(apiDesc => {

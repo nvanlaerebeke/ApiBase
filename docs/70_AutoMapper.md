@@ -6,7 +6,7 @@ The API contract being the in and output of the REST API.
 A model/entity for example should never be used as response object.  
   
 To make this process easier `AutoMapper` was used.  
-If 70% or more of two objects match it properties it is best to automate the process.  
+If 70% or more of two objects match it properties it is best to automate the process of converting one into the other.  
 An example of the `WeatherForecast` classes in the Sample API.
 
 The API contacts class:

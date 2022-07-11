@@ -33,6 +33,6 @@ public async Task<IActionResult> GetAll([FromQuery] PaginationQuery paginationQu
 The first step is going from the `PaginationQuery` class that defines the API contract to the internal `PaginationFilter` object.  
 Next is passing that along to the code for your solution that will do the paging.  
   
-There is a class `PagedResult` available to make integration between your solution and the `ServerAPI` easier.  
+There is a class `PagedResult` available to make integration between your solution and the `ApiBase` easier.  
   
 The `PageResponse` expects the data, total number of items available and the filter that was originally passed.

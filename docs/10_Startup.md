@@ -31,7 +31,7 @@ public class Startup : ApiBase.ApiBase {
 }
 ```
 
-The base ServerAPI class already does most of the heavy lifting for you.  
+The base ApiBase class already does most of the heavy lifting for you.  
 This class basically encapsulates your application so it can be run as an `ASP.NET Core Web API`.  
 
 From a user's perspective some information needs to be provided, for example:

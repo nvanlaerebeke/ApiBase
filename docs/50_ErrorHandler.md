@@ -17,43 +17,41 @@ Where `SampleException` is:
 
 ```c#
 public class SampleException: ApiException<ApiErrorCode> {
-    
+    public CDocException(IApiError<ApiErrorCode> error) : base(error) { }
 }
 ```
 
 A sample IApiError class:
 
 ```c#
-public class ApiError : IApiError<ApiErrorCode>
+public class ApiError : IApiError<ApiErrorCode> {
 
     public ApiError(ApiErrorCode errorCode) : this(errorCode, HttpStatusCode.InternalServerError) { }
 
     public ApiError(ApiErrorCode errorCode, HttpStatusCode httpStatusCode) {
-        Code = errorCode.ToString();
+        Code = errorCode;
         Message = ApiErrorMessage.GetMessageForCode(errorCode);
         HttpStatusCode = httpStatusCode;
     }
 
-    string Code { get; }
+    public ApiErrorCode Code { get; }
 
-    string Message { get; }
+    public string Message { get; }
 
-    HttpStatusCode HttpStatusCode { get; }
+    public HttpStatusCode HttpStatusCode { get; }
 }
 ```
 
 ```c#
 public enum ApiErrorCode {
-    Critical
+    Critical,
+    InvalidValue,
+    Unkown
 }
 ```
 
 ```c#
-public static class ApiErrorMessage {
-    private static readonly Dictionary<ApiErrorCode, string> Messages = new() {
-        { ApiErrorCode.Critical, "this is bad" }
-    };
-
+internal static class ApiErrorMessage
     public static string GetMessageForCode(ApiErrorCode code) {
         return Messages[code];
     }
@@ -93,3 +91,16 @@ public class BadRequestErrorCodeProvider : IBadRequestErrorCodeProvider {
     }
 }
 ```
+
+## Swagger Documentation
+
+To update the swagger documetation so that it is reported what the expected responses are add the following to the class:
+
+```c#
+[ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiError))]
+[ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiError))]
+public class WeatherForecastController : ApiController {
+    ...
+}
+
+This will make it so that every request on that controller shows a `400` and `500` response code and that the respose is of the type `ApiError`.

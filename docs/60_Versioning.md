@@ -1,7 +1,7 @@
 # Versioning
 
 An important part of any API is versioning.  
-API's created with the ServerAPI project are required to implement at least some versioning, even if there is only one version at the start.  
+API's created with the `ApiBase` project are required to implement at least some versioning, even if there is only one version at the start.  
 
 ## Startup
 
